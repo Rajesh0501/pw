@@ -1,0 +1,118 @@
+---------------------------------------------------------Questions on bit manupulation and Number System-
+Problem 1: given a number, print its binary representation. [easy]
+Input 1: number = 5
+Output 1: 101
+Input 2: number = 10
+Output 2: 1010
+
+Solution.
+public class decimalToBinary{
+    public static void main(String[] args) {
+          int n = 5;
+          StringBuilder s1 = new StringBuilder();
+          while(n>0){
+            int remainder = n%2;
+            s1 = s1.append(remainder);
+            n =  n/2;
+          }
+       StringBuilder s2 = new StringBuilder();
+       for(int i = s1.length()-1; i>=0; i--){
+                s2.append(s1.charAt(i));
+       }
+       System.out.println(s2.toString());
+
+    }
+}
+
+Problem 2: given a number ‘n’, predict whether it is a power of two or not. [medium]
+Input 1: n = 15
+Output 1: False
+Input 2: n = 32
+Output 2: True
+
+Solution.
+public class powerTwo {
+    public static boolean power(int n){
+        return n>0 && (n & n-1)==0;
+    }
+     public static void main(String[] args) {
+        int n = 32;
+        boolean ans = true;
+        ans = power(n);
+        System.out.println(ans);
+     }
+}
+
+Q3. Problem 1: Given a number. Using bit manipulation, check whether it is odd or even.
+Input 8, Even
+3, False
+
+Solution.
+
+public class EvenOdd {
+     public static boolean evenOdd(int n){
+        if((n&1)==0){
+            return true;
+        }
+        else{
+             return false;
+        }
+     }
+    public static void main(String[] args) {
+        int n = 23 ;
+        boolean ans = evenOdd(n);
+        System.out.println(ans);
+
+    }
+}
+
+Q4. Given a number, count the number of set bits in that number without using an extra space.
+Note : bit ‘1’ is also known as set bit.
+
+Solution.
+public class countSetBit {
+    public static void main(String[] args) {
+        int n1 = 23; // Binary representation: 10111
+        int n2 = 56; // Binary representation: 111000
+
+        System.out.println(countSetBits(n1)); // Output: 4
+        System.out.println(countSetBits(n2)); // Output: 3
+    }
+
+    public static int countSetBits(int n) {
+        int count = 0;
+        while (n > 0) {
+            // Increment count if the last bit is set (i.e., if it's 1)
+            count += n & 1;
+            // Right shift the number to discard the last bit
+            n >>= 1;
+        }
+        return count;
+    }
+}
+
+Q5. Given an integer array, duplicates are present in it in a way that all duplicates appear an even
+number of times except one which appears an odd number of times. Find that odd appearing
+element in linear time and without using any extra memory.
+For example,
+Input : arr[] = [4, 3, 6, 2, 6, 4, 2, 3, 4, 3, 3]
+Output : The odd occurring element is 4.
+
+Solution.
+public class OddOccurenceInArray {
+    public static int oddOccurence(int[] arr){
+        int result = 0;
+        for(int i = 0; i<arr.length; i++){
+            result ^= arr[i];
+            System.out.println(result);
+        }
+           return result;
+    }
+    public static void main(String[] args) {
+        int[] arr  = {4,3,6,2,6,4,2,3,4,3,3};
+        int oddOccurence1 = oddOccurence(arr);
+        System.out.println("odd number occure in an array "+ oddOccurence1);
+    }
+}
+
+
